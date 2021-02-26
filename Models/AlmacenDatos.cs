@@ -16,14 +16,27 @@ namespace DPWA_Lab01_Periodo01.Models
             Equipos = new List<Equipo>();
         }
 
-        public void AgregarEquipo(Equipo equipo)
+        public int AgregarEquipo(Equipo equipo)
         {
+            if (this.ExisteEquipo(equipo.Nombre))
+            {
+                return 0;
+            }
+            equipo.Codigo = ObtenerNuevoCodigoEquipo();
             Equipos.Add(equipo);
+            return 1;
         }
 
-        public void EliminarEquipo(Equipo equipo)
+        public int EliminarEquipo(Equipo equipo)
         {
-            Equipos.Remove(equipo);
+            if (this.ExisteEquipo(equipo.Nombre))
+            {
+
+                Equipos.Remove(equipo);
+                return 1;
+            }
+
+            return 0;
         }
 
         public int AgregarUniversidad(Universidad u)
@@ -80,6 +93,39 @@ namespace DPWA_Lab01_Periodo01.Models
                 return 0;
             }
             
+        }
+
+
+        public bool ExisteEquipo(string nombre)
+        {
+            Equipo equipo = this.Equipos.Find(x => x.Nombre.ToUpper() == nombre.ToUpper());
+            return equipo != null;
+        }
+
+        public Equipo BuscarEquipo(string nombre)
+        {
+            Equipo equipo = this.Equipos.Find(x => x.Nombre.ToUpper() == nombre.ToUpper());
+            return equipo;
+        }
+
+        public Equipo BuscarEquipo(int cod)
+        {
+            Equipo equipo = this.Equipos.Find(x => x.Codigo == cod);
+            return equipo;
+        }
+
+        public int ObtenerNuevoCodigoEquipo()
+        {
+            if (this.Equipos.Count > 0)
+            {
+                Equipo equipo = this.Equipos.Last();
+                return equipo.Codigo + 1;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
 
         public List<Universidad> Universidades { get => universidades; set => universidades = value; }

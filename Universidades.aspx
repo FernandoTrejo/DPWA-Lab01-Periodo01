@@ -28,7 +28,7 @@
                     <asp:LinkButton ID="btnAgregarUniversidad" Height="100%" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarUniversidad_Click"><i class="fas fa-plus"></i> &nbsp;&nbsp;Agregar</asp:LinkButton>
                 </div>
                 <div class="col-md-2">
-                    <asp:LinkButton ID="btnEditarUniversidad" Enabled="false" Height="100%" OnClientClick="return false;" CssClass="btn btn-warning" runat="server"><i class="fas fa-edit"></i> &nbsp;&nbsp;Editar</asp:LinkButton>
+                    <asp:LinkButton ID="btnEditarUniversidad" Enabled="false" Height="100%" OnClientClick="return false;" CssClass="btn btn-warning" runat="server" OnClick="btnEditarUniversidad_Click1"><i class="fas fa-edit"></i> &nbsp;&nbsp;Editar</asp:LinkButton>
                 </div>
             </div>
 

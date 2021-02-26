@@ -114,5 +114,10 @@ namespace DPWA_Lab01_Periodo01
           
             }
         }
+
+        protected void btnEditarUniversidad_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
