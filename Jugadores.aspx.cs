@@ -31,7 +31,7 @@ namespace DPWA_Lab01_Periodo01
                 Equipo equ = almacen.BuscarEquipo(Int16.Parse(codE));
                 Jugador j = equ.BuscarJugador(Int16.Parse(codJ));
 
-                imgView.ImageUrl = j.DirFotografia.Substring(1);
+                imgView.ImageUrl = j.DirFotografia;
                 txtNombre.Text = j.Nombre;
                 txtEdad.Text = j.Edad.ToString();
                 txtEstatura.Text = j.Estatura.ToString();
@@ -85,7 +85,7 @@ namespace DPWA_Lab01_Periodo01
 
         protected void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
-            string dirFoto = imgView.ImageUrl;
+            string dirFoto = imgView.ImageUrl.Substring(1);
             string nombre = txtNombre.Text.Trim();
             string pos = ddlisPos.SelectedValue.ToString();
 
