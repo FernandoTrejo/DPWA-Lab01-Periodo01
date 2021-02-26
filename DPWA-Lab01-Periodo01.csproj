@@ -71,6 +71,7 @@
     <Content Include="Equipos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Main.aspx" />
+    <Content Include="Operaciones\EliminarUniversidad.aspx" />
     <Content Include="Plantel.aspx" />
     <Content Include="Universidades.aspx" />
     <Content Include="Web.config" />
@@ -104,6 +105,13 @@
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Jugador.cs" />
     <Compile Include="Models\Universidad.cs" />
+    <Compile Include="Operaciones\EliminarUniversidad.aspx.cs">
+      <DependentUpon>EliminarUniversidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EliminarUniversidad.aspx.designer.cs">
+      <DependentUpon>EliminarUniversidad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Plantel.aspx.cs">
       <DependentUpon>Plantel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
