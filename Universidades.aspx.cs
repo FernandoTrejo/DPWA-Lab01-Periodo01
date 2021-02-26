@@ -34,7 +34,8 @@ namespace DPWA_Lab01_Periodo01
                 Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
 
                 txtNombre.Text = u.Nombre;
-                btnAgregarUniversidad.Text = "<i class='fas fa-edit'></i>&nbsp;&nbsp;Editar";
+                btnAgregarUniversidad.Enabled = false;
+                btnEditarUniversidad.Enabled = true;
             }
         }
 
@@ -78,45 +79,40 @@ namespace DPWA_Lab01_Periodo01
         protected void btnAgregarUniversidad_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
-            Response.Write("<script>alert('" + nombre + "');</script>");
-            if (Request.QueryString.Count > 0)
+            
+            //se agrega nuevo elemento
+            if (nombre != "")
             {
-                //se esta editando un elemento
-                if (nombre != "")
+                AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
+                int respuesta = almacen.AgregarUniversidad(new Universidad(nombre));
+                if (respuesta == 1)
                 {
-                    string codU = Convert.ToString(Request.QueryString["u"]);
-                    AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
-                    Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
-
-                    u.Nombre = nombre;
-                    Response.Write("<script>alert('"+nombre+"');</script>");
-                    Session["AlmacenDatos"] = almacen;
+                    //exito
+                    txtNombre.Text = "";
+                }
+                else
+                {
+                    //fallo
                 }
 
-            }
-            else
-            {
-                //se agrega nuevo elemento
-                if (nombre != "")
-                {
-                    AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
-                    int respuesta = almacen.AgregarUniversidad(new Universidad(nombre));
-                    if (respuesta == 1)
-                    {
-                        //exito
-                        txtNombre.Text = "";
-                    }
-                    else
-                    {
-                        //fallo
-                    }
-
-                    Session["AlmacenDatos"] = almacen;
-                }
+                Session["AlmacenDatos"] = almacen;
             }
 
 
             CargarUniversidades();
+        }
+
+        protected void btnEditarUniversidad_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text.Trim();
+            //se esta editando un elemento
+            if (nombre != "")
+            {
+                string codU = Convert.ToString(Request.QueryString["u"]);
+
+                Response.Redirect("Operaciones/EditarUniversidad.aspx?u=" + codU + "&nombre=" + nombre);
+          
+            }
         }
     }
 }

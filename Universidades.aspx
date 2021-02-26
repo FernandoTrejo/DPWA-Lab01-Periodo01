@@ -11,7 +11,7 @@
     <title>Universidades</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
-
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,11 +21,14 @@
         <br />
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre Universidad"></asp:TextBox>
                 </div>
                 <div class="col-md-2">
                     <asp:LinkButton ID="btnAgregarUniversidad" Height="100%" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarUniversidad_Click"><i class="fas fa-plus"></i> &nbsp;&nbsp;Agregar</asp:LinkButton>
+                </div>
+                <div class="col-md-2">
+                    <asp:LinkButton ID="btnEditarUniversidad" Enabled="false" Height="100%" OnClientClick="return false;" CssClass="btn btn-warning" runat="server"><i class="fas fa-edit"></i> &nbsp;&nbsp;Editar</asp:LinkButton>
                 </div>
             </div>
 
@@ -47,5 +50,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="JS/Universidades.js"></script>
 </body>
 </html>

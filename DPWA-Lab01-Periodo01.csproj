@@ -70,7 +70,9 @@
     <Content Include="ControlesUsuario\Menu.ascx" />
     <Content Include="Equipos.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="JS\Universidades.js" />
     <Content Include="Main.aspx" />
+    <Content Include="Operaciones\EditarUniversidad.aspx" />
     <Content Include="Operaciones\EliminarUniversidad.aspx" />
     <Content Include="Plantel.aspx" />
     <Content Include="Universidades.aspx" />
@@ -105,6 +107,13 @@
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Jugador.cs" />
     <Compile Include="Models\Universidad.cs" />
+    <Compile Include="Operaciones\EditarUniversidad.aspx.cs">
+      <DependentUpon>EditarUniversidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EditarUniversidad.aspx.designer.cs">
+      <DependentUpon>EditarUniversidad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Operaciones\EliminarUniversidad.aspx.cs">
       <DependentUpon>EliminarUniversidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
