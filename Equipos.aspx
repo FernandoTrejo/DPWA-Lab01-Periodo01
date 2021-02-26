@@ -20,53 +20,44 @@
         </div>
         <br />
         <div class="container">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-end">
                 <div class="col-md-2">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre Equipo"></asp:TextBox>
                 </div>
-                <div class="col-md-4">
-                    <asp:FileUpload ID="fileUpload" CssClass="btn btn-info" runat="server" Width="263px" />
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-6">
+                    <asp:FileUpload ID="fileUpload" CssClass="btn btn-info" runat="server" Width="403px" />
                     <asp:Button ID="btnSubirArchivo" runat="server" CssClass="btn btn-primary" Text="Subir" OnClick="btnSubirArchivo_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Image ID="imgView" runat="server" />
+                    <asp:Image ID="imgView" runat="server" Height="100px" Width="100px" />
                 </div>
             </div>
 
             <br />
 
             <div class="row d-flex justify-content-center">
-
-                <div class="col-md-4">
-                    <asp:LinkButton ID="btnAgregarEquipo" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarEquipo_Click">Agregar</asp:LinkButton>
+                
+                <div class="col-md-2">
+                    <asp:LinkButton ID="btnAgregarEquipo" Height="100%" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarEquipo_Click"><i class="fas fa-plus"></i> &nbsp;&nbsp;Agregar</asp:LinkButton>
                 </div>
             </div>
-
             <br />
 
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="table-responsive">
                         <asp:Table ID="tblEquipos" CssClass="table table-hover" runat="server">
-                            <asp:TableHeaderRow
-                                runat="server">
-                                <asp:TableHeaderCell>Nombre Equipo</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Imagen</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Editar</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Eliminar</asp:TableHeaderCell>
-                            </asp:TableHeaderRow>
                         </asp:Table>
 
                     </div>
                 </div>
             </div>
         </div>
-    </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+    </form>
+
+    </body>
 </html>

@@ -10,12 +10,10 @@ namespace DPWA_Lab01_Periodo01
 {
     public partial class Equipos : System.Web.UI.Page
     {
-        private string direccionArchivo;
         protected void Page_Load(object sender, EventArgs e)
         {
             VerificarSesiones();
-
-            direccionArchivo = "";
+            CargarEquipos();
         }
 
         private void VerificarSesiones()
@@ -29,14 +27,15 @@ namespace DPWA_Lab01_Periodo01
         protected void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
-            if (nombre != "" && direccionArchivo != "")
+            if (nombre != "" && imgView.ImageUrl != "")
             {
                 AlmacenDatos almacen = (AlmacenDatos) Session["AlmacenDatos"];
-                almacen.AgregarEquipo(new Equipo(direccionArchivo, nombre));
+                almacen.AgregarEquipo(new Equipo(imgView.ImageUrl, nombre));
                 Session["AlmacenDatos"] = almacen;
 
                 txtNombre.Text = "";
                 fileUpload.Dispose();
+                imgView.ImageUrl = "";
 
                 CargarEquipos();
             }
@@ -54,8 +53,7 @@ namespace DPWA_Lab01_Periodo01
                 string locacionServidor = carpetaDestino + nombreArchivo;
                 fileUpload.PostedFile.SaveAs(locacionServidor);
 
-                direccionArchivo = destino + nombreArchivo;
-                imgView.ImageUrl = direccionArchivo;
+                imgView.ImageUrl = destino + nombreArchivo;
             }
         }
 
@@ -66,16 +64,18 @@ namespace DPWA_Lab01_Periodo01
             this.tblEquipos.Rows.Clear();
 
             TableHeaderRow header = new TableHeaderRow();
-            TableHeaderCell headerNombre = new TableHeaderCell(), headerImagen = new TableHeaderCell(), headerEditar = new TableHeaderCell(), headerEliminar = new TableHeaderCell();
+            TableHeaderCell headerNombre = new TableHeaderCell(), headerImagen = new TableHeaderCell(), headerEditar = new TableHeaderCell(), headerEliminar = new TableHeaderCell(), headerPlantel = new TableHeaderCell();
             headerNombre.Text = "Nombre Equipo";
             headerImagen.Text = "Imagen";
             headerEditar.Text = "Editar";
             headerEliminar.Text = "Eliminar";
+            headerPlantel.Text = "Plantel";
 
             header.Cells.Add(headerNombre);
             header.Cells.Add(headerImagen);
             header.Cells.Add(headerEditar);
             header.Cells.Add(headerEliminar);
+            header.Cells.Add(headerPlantel);
 
             this.tblEquipos.Rows.Add(header);
 
@@ -85,16 +85,18 @@ namespace DPWA_Lab01_Periodo01
 
 
                 //celdas
-                TableCell cellNombre = new TableCell(), cellImagen = new TableCell(), cellEditar = new TableCell(), cellEliminar = new TableCell();
+                TableCell cellNombre = new TableCell(), cellImagen = new TableCell(), cellEditar = new TableCell(), cellEliminar = new TableCell(), cellPlantel = new TableCell();
                 cellNombre.Text = equipo.Nombre;
-                cellImagen.Text = equipo.DirFotografia;
+                cellImagen.Text = string.Format("<img width='50px' height='50px' src='{0}' />", equipo.DirFotografia.Substring(1));
                 cellEditar.Text = "Pendiente";
                 cellEliminar.Text = "Pendiente";
+                cellPlantel.Text = "<a class='btn btn-primary' href='Plantel.aspx?equipo="+equipo.Nombre+"'>Ver Jugadores</a>";
 
                 row.Cells.Add(cellNombre);
                 row.Cells.Add(cellImagen);
                 row.Cells.Add(cellEditar);
                 row.Cells.Add(cellEliminar);
+                row.Cells.Add(cellPlantel);
 
                 this.tblEquipos.Rows.Add(row);
             }
