@@ -51,13 +51,13 @@ namespace DPWA_Lab01_Periodo01
         protected global::System.Web.UI.WebControls.FileUpload fileUpload;
 
         /// <summary>
-        /// Control btnAgregarEquipo.
+        /// Control btnSubirArchivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAgregarEquipo;
+        protected global::System.Web.UI.WebControls.Button btnSubirArchivo;
 
         /// <summary>
         /// Control imgView.
@@ -69,12 +69,21 @@ namespace DPWA_Lab01_Periodo01
         protected global::System.Web.UI.WebControls.Image imgView;
 
         /// <summary>
-        /// Control tblJugadores.
+        /// Control btnAgregarEquipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblJugadores;
+        protected global::System.Web.UI.WebControls.LinkButton btnAgregarEquipo;
+
+        /// <summary>
+        /// Control tblEquipos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblEquipos;
     }
 }

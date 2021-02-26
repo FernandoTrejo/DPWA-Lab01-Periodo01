@@ -7,10 +7,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Equipos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
 
 </head>
 <body>
@@ -25,19 +25,22 @@
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre Equipo"></asp:TextBox>
                 </div>
                 <div class="col-md-4">
-                    <asp:FileUpload ID="fileUpload" CssClass="btn btn-info" runat="server" Width="227px" />
+                    <asp:FileUpload ID="fileUpload" CssClass="btn btn-info" runat="server" Width="263px" />
                 </div>
                 <div class="col-md-2">
-                    <asp:LinkButton ID="btnAgregarEquipo" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarEquipo_Click">Agregar</asp:LinkButton>
+                    <asp:Button ID="btnSubirArchivo" runat="server" CssClass="btn btn-primary" Text="Subir" OnClick="btnSubirArchivo_Click" />
+                </div>
+                <div class="col-md-2">
+                    <asp:Image ID="imgView" runat="server" />
                 </div>
             </div>
 
             <br />
 
             <div class="row d-flex justify-content-center">
- 
+
                 <div class="col-md-4">
-                    <asp:Image ID="imgView" runat="server" />
+                    <asp:LinkButton ID="btnAgregarEquipo" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarEquipo_Click">Agregar</asp:LinkButton>
                 </div>
             </div>
 
@@ -46,7 +49,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="table-responsive">
-                        <asp:Table ID="tblJugadores" CssClass="table table-hover" runat="server">
+                        <asp:Table ID="tblEquipos" CssClass="table table-hover" runat="server">
                             <asp:TableHeaderRow
                                 runat="server">
                                 <asp:TableHeaderCell>Nombre Equipo</asp:TableHeaderCell>
