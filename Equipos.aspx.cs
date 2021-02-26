@@ -73,14 +73,14 @@ namespace DPWA_Lab01_Periodo01
             TableHeaderRow header = new TableHeaderRow();
             TableHeaderCell headerNombre = new TableHeaderCell(), headerImagen = new TableHeaderCell(), headerEditar = new TableHeaderCell(), headerEliminar = new TableHeaderCell(), headerPlantel = new TableHeaderCell(), headerInfo = new TableHeaderCell();
             headerNombre.Text = "Nombre Equipo";
-            headerImagen.Text = "Imagen";
+            headerImagen.Text = "";
             headerEditar.Text = "Editar";
             headerEliminar.Text = "Eliminar";
             headerPlantel.Text = "Plantel";
             headerInfo.Text = "Info";
 
-            header.Cells.Add(headerNombre);
             header.Cells.Add(headerImagen);
+            header.Cells.Add(headerNombre);
             header.Cells.Add(headerEditar);
             header.Cells.Add(headerEliminar);
             header.Cells.Add(headerPlantel);
@@ -100,7 +100,7 @@ namespace DPWA_Lab01_Periodo01
                 cellEditar.Text = "Pendiente";
                 cellEliminar.Text = "Pendiente";
                 cellPlantel.Text = "<a class='btn btn-primary' href='Plantel.aspx?equipo="+equipo.Codigo+"'>Ver Jugadores</a>";
-
+              
                 string mensajeInfo = "";
                 if (equipo.EquipoEstaCompleto())
                 {
@@ -116,11 +116,12 @@ namespace DPWA_Lab01_Periodo01
 
                 cellInfo.Text = mensajeInfo;
 
-                row.Cells.Add(cellNombre);
                 row.Cells.Add(cellImagen);
+                row.Cells.Add(cellNombre);
                 row.Cells.Add(cellEditar);
                 row.Cells.Add(cellEliminar);
                 row.Cells.Add(cellPlantel);
+                row.Cells.Add(cellInfo);
 
                 this.tblEquipos.Rows.Add(row);
             }

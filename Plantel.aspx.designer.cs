@@ -33,6 +33,24 @@ namespace DPWA_Lab01_Periodo01
         protected global::DPWA_Lab01_Periodo01.ControlesUsuario.Menu Menu;
 
         /// <summary>
+        /// Control btnAgregarJugador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAgregarJugador;
+
+        /// <summary>
+        /// Control ddlistEquipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlistEquipo;
+
+        /// <summary>
         /// Control tblPlantel.
         /// </summary>
         /// <remarks>

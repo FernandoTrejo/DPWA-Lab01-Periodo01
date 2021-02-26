@@ -14,10 +14,10 @@ namespace DPWA_Lab01_Periodo01.Models
         private int edad;
         private double estatura;
         private double peso;
-        private Universidad u;
+        private int u;
         private double salario;
 
-        public Jugador(string dirFotografia, string nombre, string posicion, int edad, double estatura, double peso, Universidad u, double salario)
+        public Jugador(string dirFotografia, string nombre, string posicion, int edad, double estatura, double peso, int u, double salario)
         {
             DirFotografia = dirFotografia;
             Nombre = nombre;
@@ -35,7 +35,7 @@ namespace DPWA_Lab01_Periodo01.Models
         public int Edad { get => edad; set => edad = value; }
         public double Estatura { get => estatura; set => estatura = value; }
         public double Peso { get => peso; set => peso = value; }
-        public Universidad U { get => u; set => u = value; }
+        public int U { get => u; set => u = value; }
         public int Codigo { get => codigo; set => codigo = value; }
         public double Salario { get => salario; set => salario = value; }
     }

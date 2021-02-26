@@ -13,7 +13,7 @@ namespace DPWA_Lab01_Periodo01
         protected void Page_Load(object sender, EventArgs e)
         {
             VerificarSesiones();
-            CargarUniversidades();
+            CargarJugadores();
         }
 
         private void VerificarSesiones()
@@ -24,7 +24,25 @@ namespace DPWA_Lab01_Periodo01
             }
         }
 
-        private void CargarUniversidades()
+        private void CargarListaEquipos(Equipo equipoSeleccionado)
+        {
+            AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
+
+            foreach(Equipo equipo in almacen.Equipos)
+            {
+                ListItem li = new ListItem();
+                li.Text = equipo.Nombre;
+                li.Value = equipo.Codigo.ToString();
+
+                if(equipo.Codigo == equipoSeleccionado.Codigo)
+                {
+                    li.Selected = true;
+                }
+                ddlistEquipo.Items.Add(li);
+            }
+        }
+
+        private void CargarJugadores()
         {
             Equipo equipo = null;
             AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
@@ -32,11 +50,7 @@ namespace DPWA_Lab01_Periodo01
             {
                 string cod = Convert.ToString(Request.QueryString["equipo"]);
                 equipo = almacen.BuscarEquipo(Int16.Parse(cod));
-
-                equipo.AgregarJugador(new Jugador("fhefwehfeu", "Ronald", "DE", 14, 3.4,34.3,new Universidad("itca"),30202));
-                equipo.AgregarJugador(new Jugador("jgjerie", "Fernando", "L", 15, 3.4,34.3,new Universidad("itca"),3477));
-                equipo.AgregarJugador(new Jugador("ojojrg", "Gomez", "MA", 16, 3.4,34.3,new Universidad("iunicaes"),4000));
-                equipo.AgregarJugador(new Jugador("jfijri", "Trejo", "LE", 17, 3.4,34.3,new Universidad("ues"),500));
+                CargarListaEquipos(equipo);
             }
 
 
@@ -94,16 +108,18 @@ namespace DPWA_Lab01_Periodo01
                     cellEditar = new TableCell(), 
                     cellEliminar = new TableCell();
 
-                cellFoto.Text = string.Format("<img width='50px' height='50px' src='{0}' />", j.DirFotografia.Substring(1));
+                cellFoto.Text = string.Format("<img width='50px' height='50px' src='{0}' />", j.DirFotografia);
                 cellNombre.Text = j.Nombre;
                 cellPos.Text = j.Posicion;
                 cellEdad.Text = j.Edad.ToString();
                 cellEst.Text = j.Estatura.ToString();
                 cellPeso.Text = j.Peso.ToString();
-                cellU.Text = j.U.Nombre;
+
+                Universidad U = almacen.BuscarUniversidad(j.U);
+                cellU.Text = U.Nombre;
                 cellSalario.Text = "$"+j.Salario.ToString();
-                cellEditar.Text = "<a class='btn btn-warning' href='Jugadores.aspx?cod=" + j.Codigo + "'><i class='fas fa-edit'></i></a>";
-                cellEliminar.Text = "<a class='btn btn-primary' href='Operaciones/EliminarJugador.aspx?u=" + j.Codigo + "'><i class='fas fa-trash-alt'></i></a>";
+                cellEditar.Text = "<a class='btn btn-warning' href='Jugadores.aspx?codE="+equipo.Codigo+"&codJ=" + j.Codigo + "'><i class='fas fa-edit'></i></a>";
+                cellEliminar.Text = "<a class='btn btn-primary' href='Operaciones/EliminarJugador.aspx?codE=" + equipo.Codigo + "&codJ=" + j.Codigo + "'><i class='fas fa-trash-alt'></i></a>";
 
                 row.Cells.Add(cellFoto);
                 row.Cells.Add(cellNombre);
@@ -118,6 +134,21 @@ namespace DPWA_Lab01_Periodo01
 
                 this.tblPlantel.Rows.Add(row);
             }
+        }
+
+        protected void btnAgregarJugador_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString.Count > 0)
+            {
+                string cod = Convert.ToString(Request.QueryString["equipo"]);
+                Response.Redirect("Jugadores.aspx?equipo="+cod);
+            }
+        }
+
+        protected void ddlistEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string cod = ddlistEquipo.SelectedValue.ToString();
+            Response.Redirect("Plantel.aspx?equipo="+cod);
         }
     }
 }

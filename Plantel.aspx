@@ -20,8 +20,19 @@
         </div>
         <br />
         <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="col-md-3">
+                    <asp:LinkButton ID="btnAgregarJugador" CssClass="btn btn-primary" runat="server" OnClick="btnAgregarJugador_Click"><i class="fas fa-plus"></i> &nbsp;&nbsp;Agregar Nuevo Jugador</asp:LinkButton>
+                </div>
+                <div class="col-md-3">
+                    <asp:DropDownList ID="ddlistEquipo" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlistEquipo_SelectedIndexChanged"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="table-responsive">
                         <asp:Table ID="tblPlantel" CssClass="table table-hover" runat="server">
                         </asp:Table>

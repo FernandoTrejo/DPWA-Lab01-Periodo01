@@ -70,9 +70,15 @@
     <Content Include="ControlesUsuario\Menu.ascx" />
     <Content Include="Equipos.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="JS\Jugadores.js" />
     <Content Include="JS\Universidades.js" />
+    <Content Include="Jugadores.aspx" />
     <Content Include="Main.aspx" />
+    <Content Include="Operaciones\EditarEquipo.aspx" />
+    <Content Include="Operaciones\EditarJugador.aspx" />
     <Content Include="Operaciones\EditarUniversidad.aspx" />
+    <Content Include="Operaciones\EliminarEquipo.aspx" />
+    <Content Include="Operaciones\EliminarJugador.aspx" />
     <Content Include="Operaciones\EliminarUniversidad.aspx" />
     <Content Include="Plantel.aspx" />
     <Content Include="Universidades.aspx" />
@@ -96,6 +102,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Jugadores.aspx.cs">
+      <DependentUpon>Jugadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Jugadores.aspx.designer.cs">
+      <DependentUpon>Jugadores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,12 +120,40 @@
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Jugador.cs" />
     <Compile Include="Models\Universidad.cs" />
+    <Compile Include="Operaciones\EditarEquipo.aspx.cs">
+      <DependentUpon>EditarEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EditarEquipo.aspx.designer.cs">
+      <DependentUpon>EditarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\EditarJugador.aspx.cs">
+      <DependentUpon>EditarJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EditarJugador.aspx.designer.cs">
+      <DependentUpon>EditarJugador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Operaciones\EditarUniversidad.aspx.cs">
       <DependentUpon>EditarUniversidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Operaciones\EditarUniversidad.aspx.designer.cs">
       <DependentUpon>EditarUniversidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\EliminarEquipo.aspx.cs">
+      <DependentUpon>EliminarEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EliminarEquipo.aspx.designer.cs">
+      <DependentUpon>EliminarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\EliminarJugador.aspx.cs">
+      <DependentUpon>EliminarJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\EliminarJugador.aspx.designer.cs">
+      <DependentUpon>EliminarJugador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\EliminarUniversidad.aspx.cs">
       <DependentUpon>EliminarUniversidad.aspx</DependentUpon>
