@@ -13,5 +13,19 @@ namespace DPWA_Lab01_Periodo01
         {
 
         }
+
+        protected void btnAgregarEquipo_Click(object sender, EventArgs e)
+        {
+            string nombreArchivo = string.Empty;
+            string destino = @"~/imagenes/";
+            if (fileUpload.HasFile)
+            {
+                string carpetaDestino = Server.MapPath(destino);
+                nombreArchivo = System.IO.Path.GetFileName(fileUpload.PostedFile.FileName);
+                string locacionServidor = carpetaDestino + nombreArchivo;
+                fileUpload.PostedFile.SaveAs(locacionServidor);
+                imgView.ImageUrl = destino + nombreArchivo;
+            }
+        }
     }
 }
