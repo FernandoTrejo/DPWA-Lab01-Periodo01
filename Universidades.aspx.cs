@@ -34,8 +34,10 @@ namespace DPWA_Lab01_Periodo01
                 Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
 
                 txtNombre.Text = u.Nombre;
-                btnAgregarUniversidad.Enabled = false;
-                btnEditarUniversidad.Enabled = true;
+                btnAgregarUniversidad.Visible = false;
+                btnEditarUniversidad.Visible = true;
+
+
             }
         }
 
