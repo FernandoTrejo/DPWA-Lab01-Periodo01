@@ -13,11 +13,12 @@ namespace DPWA_Lab01_Periodo01
         protected void Page_Load(object sender, EventArgs e)
         {
             VerificarSesiones();
-            VerificarExistenciaEditar();
             if (!this.IsPostBack)
             {
                 CargarListaU();
             }
+
+            VerificarExistenciaEditar();
         }
 
         private void VerificarExistenciaEditar()
