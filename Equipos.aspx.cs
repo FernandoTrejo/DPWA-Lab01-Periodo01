@@ -14,6 +14,23 @@ namespace DPWA_Lab01_Periodo01
         {
             VerificarSesiones();
             CargarEquipos();
+            VerificarExistenciaEditar();
+
+        }
+
+        private void VerificarExistenciaEditar()
+        {
+            if (Request.QueryString.Count > 0)
+            {
+                string codE = Convert.ToString(Request.QueryString["equipo"]);
+                AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
+                Equipo equ = almacen.BuscarEquipo(Int16.Parse(codE));
+
+                txtNombre.Text = equ.Nombre;
+                imgView.ImageUrl = equ.DirFotografia;
+                btnAgregarEquipo.Visible = false;
+                btnEditarEquipo.Visible = true;
+            }
         }
 
         private void VerificarSesiones()
@@ -30,7 +47,7 @@ namespace DPWA_Lab01_Periodo01
             if (nombre != "" && imgView.ImageUrl != "")
             {
                 AlmacenDatos almacen = (AlmacenDatos) Session["AlmacenDatos"];
-                int respuesta = almacen.AgregarEquipo(new Equipo(imgView.ImageUrl, nombre));
+                int respuesta = almacen.AgregarEquipo(new Equipo(imgView.ImageUrl.Substring(1), nombre));
 
                 if (respuesta == 1)
                 {
@@ -96,8 +113,8 @@ namespace DPWA_Lab01_Periodo01
                 //celdas
                 TableCell cellNombre = new TableCell(), cellImagen = new TableCell(), cellEditar = new TableCell(), cellEliminar = new TableCell(), cellPlantel = new TableCell(), cellInfo = new TableCell();
                 cellNombre.Text = equipo.Nombre;
-                cellImagen.Text = string.Format("<img width='50px' height='50px' src='{0}' />", equipo.DirFotografia.Substring(1));
-                cellEditar.Text = "Pendiente";
+                cellImagen.Text = string.Format("<img width='50px' height='50px' src='{0}' />", equipo.DirFotografia);
+                cellEditar.Text = "<a class='btn btn-warning' href='Equipos.aspx?equipo=" + equipo.Codigo + "'><i class='fas fa-edit'></i></a>";
                 cellEliminar.Text = "Pendiente";
                 cellPlantel.Text = "<a class='btn btn-primary' href='Plantel.aspx?equipo="+equipo.Codigo+"'>Ver Jugadores</a>";
               

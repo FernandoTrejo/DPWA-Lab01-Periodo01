@@ -70,6 +70,7 @@
     <Content Include="ControlesUsuario\Menu.ascx" />
     <Content Include="Equipos.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="JS\Equipos.js" />
     <Content Include="JS\Jugadores.js" />
     <Content Include="JS\Universidades.js" />
     <Content Include="Jugadores.aspx" />
