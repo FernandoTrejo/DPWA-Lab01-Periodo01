@@ -17,6 +17,9 @@ namespace DPWA_Lab01_Periodo01
             CargarUniversidades();
         }
 
+        
+
+
         private void VerificarSesiones()
         {
             if (Session["AlmacenDatos"] == null)
@@ -29,13 +32,17 @@ namespace DPWA_Lab01_Periodo01
         {
             if (Request.QueryString.Count > 0)
             {
-                string codU = Convert.ToString(Request.QueryString["u"]);
-                AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
-                Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
+                if (Request.QueryString["u"] != null)
+                {
+                    string codU = Convert.ToString(Request.QueryString["u"]);
+                    AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
+                    Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
 
-                txtNombre.Text = u.Nombre;
-                btnAgregarUniversidad.Enabled = false;
-                btnEditarUniversidad.Enabled = true;
+                    txtNombre.Text = u.Nombre;
+                    btnAgregarUniversidad.Enabled = false;
+                    btnEditarUniversidad.Enabled = true;
+                }
+                
             }
         }
 

@@ -10,10 +10,26 @@ namespace DPWA_Lab01_Periodo01
 {
     public partial class Equipos : System.Web.UI.Page
     {
+        private EquiposController controller;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             VerificarSesiones();
             CargarEquipos();
+
+            controller = new EquiposController(Session);
+
+            validateReceivedPasrams();
+        }
+
+        private void validateReceivedPasrams()
+        {
+            if (Request.QueryString["deleteTeam"] != null)
+            {
+                Session["AlmacenDatos"] = controller.deleteTeam(Request.QueryString["teamId"].ToString());
+
+                Response.Redirect("Equipos.aspx");
+            }
         }
 
         private void VerificarSesiones()
@@ -98,7 +114,7 @@ namespace DPWA_Lab01_Periodo01
                 cellNombre.Text = equipo.Nombre;
                 cellImagen.Text = string.Format("<img width='50px' height='50px' src='{0}' />", equipo.DirFotografia.Substring(1));
                 cellEditar.Text = "Pendiente";
-                cellEliminar.Text = "Pendiente";
+                cellEliminar.Text = "<a class='btn btn-danger' href='Equipos.aspx?deleteTeam=true&teamId=" + equipo.Codigo + "'>Eliminar</a>";
                 cellPlantel.Text = "<a class='btn btn-primary' href='Plantel.aspx?equipo="+equipo.Codigo+"'>Ver Jugadores</a>";
               
                 string mensajeInfo = "";
