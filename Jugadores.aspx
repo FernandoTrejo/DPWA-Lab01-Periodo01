@@ -49,7 +49,7 @@
                                     <asp:ListItem Value="AP">Ala-Pivot</asp:ListItem>
                                     <asp:ListItem Value="C">Pivot</asp:ListItem>
                                 </asp:DropDownList>
-
+                                <small id="emailHelp" class="form-text text-danger" runat="server"></small>
                             </div>
                             <div class="form-group">
                                 <label for="txtEdad" class="col-form-label">Edad</label>
