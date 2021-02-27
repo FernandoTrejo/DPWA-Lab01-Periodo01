@@ -38,15 +38,10 @@ namespace DPWA_Lab01_Periodo01
                     AlmacenDatos almacen = (AlmacenDatos)Session["AlmacenDatos"];
                     Universidad u = almacen.BuscarUniversidad(Int16.Parse(codU));
 
-                txtNombre.Text = u.Nombre;
-                btnAgregarUniversidad.Visible = false;
-                btnEditarUniversidad.Visible = true;
-
-
-            }
                     txtNombre.Text = u.Nombre;
-                    btnAgregarUniversidad.Enabled = false;
-                    btnEditarUniversidad.Enabled = true;
+                    btnAgregarUniversidad.Visible = false;
+                    btnEditarUniversidad.Visible = true;
+
                 }
                 
             }
