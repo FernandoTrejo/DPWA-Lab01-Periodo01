@@ -111,6 +111,9 @@ namespace DPWA_Lab01_Periodo01
                 {
                     Session["AlmacenDatos"] = almacen;
                     Response.Redirect("Plantel.aspx?equipo=" + equipo.Codigo);
+                }else if(respuesta == 2)
+                {
+                    emailHelp.InnerText = "Se alcanzó el máximo de esta posición";
                 }
             }
         }

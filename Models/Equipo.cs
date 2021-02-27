@@ -14,6 +14,12 @@ namespace DPWA_Lab01_Periodo01.Models
         private const int MAX_JUGADORES = 15;
         private const int MIN_JUGADORES = 5;
 
+        private const int MAX_BASE = 1;
+        private const int MAX_ESCOLTA = 2;
+        private const int MAX_ALERO = 3;
+        private const int MAX_ALAPIVOT = 4;
+        private const int MAX_PIVOT = 5;
+
         public Equipo(string dirFotografia, string nombre)
         {
             DirFotografia = dirFotografia;
@@ -26,6 +32,12 @@ namespace DPWA_Lab01_Periodo01.Models
             if (EquipoEstaCompleto())
             {
                 return 0;
+            }
+
+            int apariciones = ObtenerCantidadPos(jugador.Posicion);
+            if(!EsValidaPosicion(apariciones, jugador.Posicion))
+            {
+                return 2;
             }
 
             jugador.Codigo = ObtenerNuevoCodigoJugador();
@@ -55,12 +67,56 @@ namespace DPWA_Lab01_Periodo01.Models
             return jugador;
         }
 
+        public List<Jugador> BuscarJugadores(string pos)
+        {
+            List<Jugador> jugadores = this.Jugadores.FindAll(x => x.Posicion.ToUpper() == pos.ToUpper());
+            return jugadores;
+        }
+
         public Jugador BuscarJugador(int cod)
         {
             Jugador jugador = this.Jugadores.Find(x => x.Codigo == cod);
             return jugador;
         }
 
+        public bool EsValidaPosicion(int cantidad, string pos)
+        {
+            switch (pos)
+            {
+                case "BA":
+                    if(cantidad == MAX_BASE)
+                    {
+                        return false;
+                    }
+                    break;
+                case "E":
+                    if (cantidad == MAX_ESCOLTA)
+                    {
+                        return false;
+                    }
+                    break;
+                case "SF":
+                    if (cantidad == MAX_ALERO)
+                    {
+                        return false;
+                    }
+                    break;
+                case "AP":
+                    if (cantidad == MAX_ALAPIVOT)
+                    {
+                        return false;
+                    }
+                    break;
+                case "C":
+                    if (cantidad == MAX_PIVOT)
+                    {
+                        return false;
+                    }
+                    break;
+            }
+
+            return true;
+        }
         public int ObtenerNuevoCodigoJugador()
         {
             if (this.Jugadores.Count > 0)
@@ -75,6 +131,33 @@ namespace DPWA_Lab01_Periodo01.Models
 
         }
 
+        public int ObtenerCantidadPos(string pos)
+        {
+            List<Jugador> jugadores;
+            switch (pos)
+            {
+                case "BA":
+                    jugadores = this.BuscarJugadores("BA");
+                    break;
+                case "E":
+                    jugadores = this.BuscarJugadores("E");
+                    break;
+                case "SF":
+                    jugadores = this.BuscarJugadores("SF");
+                    break;
+                case "AP":
+                    jugadores = this.BuscarJugadores("AP");
+                    break;
+                case "C":
+                    jugadores = this.BuscarJugadores("C");
+                    break;
+                default:
+                    jugadores = new List<Jugador>();
+                    break;
+            }
+
+            return jugadores.Count;
+        }
 
         public bool EquipoEstaIncompleto()
         {
